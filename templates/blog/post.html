@@ -29,7 +29,7 @@
                                 <a href="">
                                     <h5 class="f_p f_size_20 f_500 t_color mb_20">{{ post.title }}.</h5>
                                 </a>
-                                <p class="f_400 mb_20">{{ post.description }}.</p>                       
+                                <p class="f_400 mb_20">{{ post.description| safe }}.</p>                       
                             </div>
                         </div>
 
@@ -78,7 +78,7 @@
                                             <a href="" class="replay"><i class="ti-share"></i></a>
                                         </div>
                                         <div class="media-body">
-                                            <h5 class="f_p t_color3 f_size_18 f_500">{{comment.name}}</h5>
+                                            <h5 class="f_p t_color3 f_size_18 f_500">{{comment.name|safe}}</h5>
                                             <h6 class="f_p f_size_15 f_400 mb_20">{{ comment.commented_at }}</h6>
                                             <p>{{comment.comment}}!</p>
                                         </div>
@@ -135,58 +135,24 @@
                                     <h3 class="f_p f_size_20 t_color3">Recent posts</h3>
                                     <div class="border_bottom"></div>
                                 </div>
+                                {% for post in recent %}
                                 <div class="media post_item">
-                                    <img src="img/post_1.jpg" alt="">
+                                    <a href="/Postpage/{{ post.title }}"><img src="{{post.image.url}}" width='100'height='100'></a>
                                     <div class="media-body">
-                                        <a href="http://droitthemes.com/html/saasland/blog-list.html#">
-                                            <h3 class="f_size_16 f_p f_400">Proin gravi nibh velit auctor aliquet
-                                                aenean.</h3>
+                                        <a href="/Postpage/{{ post.title }}">
+                                            <h3 class="f_size_16 f_p f_400">{{post.title}}.</h3>
                                         </a>
                                         <div class="entry_post_info">
-                                            By: <a href="http://droitthemes.com/html/saasland/blog-list.html#">Admin</a>
-                                            <a href="http://droitthemes.com/html/saasland/blog-list.html#">March 14, 2018</a>
+                                            By: <a href="">{{post.user}}</a>
+                                            <a href="">{{post.posted_at}}</a>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="media post_item">
-                                    <img src="img/post_2.jpg" alt="">
-                                    <div class="media-body">
-                                        <a href="http://droitthemes.com/html/saasland/blog-list.html#">
-                                            <h3 class="f_size_16 f_p f_400">Proin gravi nibh velit auctor aliquet
-                                                aenean.</h3>
-                                        </a>
-                                        <div class="entry_post_info">
-                                            By: <a href="http://droitthemes.com/html/saasland/blog-list.html#">Admin</a>
-                                            <a href="http://droitthemes.com/html/saasland/blog-list.html#">March 14, 2018</a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="media post_item">
-                                    <img src="img/post_3.jpg" alt="">
-                                    <div class="media-body">
-                                        <a href="http://droitthemes.com/html/saasland/blog-list.html#">
-                                            <h3 class="f_size_16 f_p f_400">Proin gravi nibh velit auctor aliquet
-                                                aenean.</h3>
-                                        </a>
-                                        <div class="entry_post_info">
-                                            By: <a href="http://droitthemes.com/html/saasland/blog-list.html#">Admin</a>
-                                            <a href="http://droitthemes.com/html/saasland/blog-list.html#">March 14, 2018</a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="media post_item">
-                                    <img src="img/post_4.jpg" alt="">
-                                    <div class="media-body">
-                                        <a href="http://droitthemes.com/html/saasland/blog-list.html#">
-                                            <h3 class="f_size_16 f_p f_400">Proin gravi nibh velit auctor aliquet
-                                                aenean.</h3>
-                                        </a>
-                                        <div class="entry_post_info">
-                                            By: <a href="http://droitthemes.com/html/saasland/blog-list.html#">Admin</a>
-                                            <a href="http://droitthemes.com/html/saasland/blog-list.html#">March 14, 2018</a>
-                                        </div>
-                                    </div>
-                                </div>
+                                {% endfor %}
+                                
+                                
+
+
                             </div>
                             <div class="widget sidebar_widget widget_categorie mt_60">
                                 <div class="widget_title">
@@ -205,7 +171,7 @@
                                     <div class="border_bottom"></div>
                                 </div>
                                 <div class="post-tags">
-                                    <a href="">{{post.tags}}</a>
+                                    <a href="/Postpage/{{ post.title }}">{{post.tags}}</a>
                                 </div>
                             </div>
                         </div>

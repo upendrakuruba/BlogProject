@@ -1,9 +1,13 @@
 from django.shortcuts import render,redirect
 from .models import *
+from django.core.paginator import Paginator
 # Create your views here.
 def Blogpage(request):
     categories = Category.objects.all()
     posts = Post.objects.filter(is_published=True).order_by('posted_at')
+    posts = Paginator(posts,3)
+    page = request.GET.get('page')
+    posts = posts.get_page(page)
     #print('10*--------',categories)
     context = {
         'categories':categories,

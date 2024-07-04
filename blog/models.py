@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 from datetime import datetime
+from ckeditor.fields import RichTextField
 # Create your models here.
 class Category(models.Model):
     name = models.CharField(max_length=100)
@@ -16,7 +17,7 @@ class Post(models.Model):
     user = models.ForeignKey(User,on_delete=models.CASCADE,related_name='users')
     title = models.CharField(max_length=100)
     image = models.ImageField(upload_to='media')
-    description = models.TextField()
+    description = RichTextField(blank=True,null=True)
     tags = models.CharField(max_length=100)
     posted_at = models.DateField(default=datetime.now)
     is_published = models.BooleanField(default=False)
