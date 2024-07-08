@@ -37,8 +37,11 @@ def Login_page(request):
   user = authenticate(username=username,password=password)
   if user is not None:
    login(request,user)
-   messages.info(request,'Successfully Login')
-   return redirect('Blogpage')
+   if 'next' in request.POST:
+    messages.info(request,'Successfully Login')
+    return redirect(request.POST.get('next'))
+   else:
+    return redirect('Blogpage')
   else:
    messages.info(request,'User name or Password not Match')
    return render(request, 'accounts/login.html')

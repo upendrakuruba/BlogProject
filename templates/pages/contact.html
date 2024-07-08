@@ -28,7 +28,16 @@
                     </div>
                     <div class="col-lg-8 offset-lg-1">
                         <div class="contact_form">
+    
                             <form action="" class="contact_form_box" method="POST" id="contactForm" novalidate="novalidate">{% csrf_token %}
+                                {% for  message in messages  %}
+                            <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                                <strong>Holy !</strong>{{message}}.
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            {% endfor %}
                                 <div class="row">
                                     <div class="col-lg-6">
                                         <div class="form-group text_box">
