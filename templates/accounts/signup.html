@@ -29,6 +29,14 @@
                         <div class="col-lg-7">
                             <div class="login_info">
                                 <h2 class="f_p f_600 f_size_24 t_color3 mb_40">Sign Up</h2>
+                                {% for  message in messages  %}
+                                <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                                    <strong>Holy !</strong>{{message}}.
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                {% endfor %}
                                 <form action="" class="login-form sign-in-form" method='POST'>{% csrf_token %}
                                     <div class="form-group text_box">
                                         <label class="f_p text_c f_400">Username</label>
@@ -40,7 +48,11 @@
                                     </div>
                                     <div class="form-group text_box">
                                         <label class="f_p text_c f_400">Password</label>
-                                        <input type="password" placeholder="******" name='password'>
+                                        <input type="password" placeholder="******" name='password1'>
+                                    </div>
+                                    <div class="form-group text_box">
+                                        <label class="f_p text_c f_400">Confirm Password</label>
+                                        <input type="password" placeholder="******" name='password2'>
                                     </div>
                                     <div class="extra mb_20">
                                         <div class="checkbox remember">
