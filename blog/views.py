@@ -19,7 +19,7 @@ def Blogpage(request):
     }
     return render(request,'blog/blog.html',context)
 
-
+@login_required(login_url='Login')
 def Postpage(request,title):
     post = Post.objects.get(title=title)
     categories = Category.objects.all()
@@ -37,7 +37,7 @@ def Postpage(request,title):
     }
     return render(request,'blog/post.html',context)
 
-
+@login_required(login_url='Login')
 def post_comment(request):
     if request.method == 'POST':
         comment = request.POST.get('comment')
@@ -67,7 +67,7 @@ def search_view(request):
             }
     return render(request,'blog/blog.html',context)
 
-
+@login_required(login_url='Login')
 def get_category(request,cat):
     category = Category.objects.get(name=cat)
     posts = Post.objects.filter(category=category)
