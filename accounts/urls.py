@@ -4,8 +4,8 @@ from django.contrib.auth import views as auth_views
 from .forms import *
 
 urlpatterns = [
-    path("Signpage/", Signpage, name="Sign"),
-    path("Loginpage/", Loginpage, name="Login"),
+    path("Signpage/", Sign_page, name="Signpage"),
+    path("Loginpage/", Login_page, name="Login"),
     path("logout_user/", logout_user, name="logout_user"),
     path("download_csv/", download_csv, name="download_csv"),
     path("passwordchange/", auth_views.PasswordChangeView.as_view(template_name='accounts/changepassword.html',form_class=MyPasswordChangeForm,success_url='/passwordchangedone/'),name="passwordchange"),
