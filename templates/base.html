@@ -72,7 +72,7 @@
                             </li>
                             {% if request.user.is_authenticated %}
 
-                            <li class="dropdown submenu nav-item"><a title="Pages" href="">{{request.user}}</a>
+                            <li class="dropdown submenu nav-item"><a title="Pages" href="">{{request.user.first_name}}</a>
                                 <ul role="menu" class=" dropdown-menu">
                                     
 
@@ -96,7 +96,7 @@
 
                             {% else %}
                             <li class="nav-item dropdown submenu mega_menu">
-                                <a class="nav-link dropdown-toggle" href="{% url "Sign" %}" >
+                                <a class="nav-link dropdown-toggle" href="{% url "Signpage" %}" >
                                     Sign Up
                                 </a>
                                 
